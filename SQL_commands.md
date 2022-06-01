@@ -2,6 +2,10 @@
 
 SELECT * FROM `students` WHERE YEAR(date_of_birth) = 1990;
 
+Verifico anche tramite count: (160)
+
+SELECT count(id) FROM `students` WHERE YEAR(date_of_birth) = 1990;
+
 ____________________________________________________________________________
 
 
