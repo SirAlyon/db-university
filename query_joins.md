@@ -37,3 +37,29 @@ FROM `students`
 JOIN `degrees` ON `students` .`degree_id` = `degrees`.`id`
 JOIN `departments` ON `departments` .`id` = `degrees` .`department_id`
 ORDER BY `students` .`surname`, `students` .`name`;
+
+_________________________________________________________
+
+
+5.
+
+SELECT `degrees` .`name`, `courses` .`name`, `teachers` .`name`, `teachers` .`surname`
+FROM `degrees` 
+JOIN `courses` ON `courses` .`degree_id` = `degrees` .`id`
+JOIN `course_teacher` ON `course_teacher` .`course_id` = `courses` .`id`
+JOIN `teachers` ON `teachers`.`id` = `course_teacher` .`teacher_id`
+ORDER BY `degrees` .`name`;
+
+_________________________________________________________
+
+
+6.
+
+SELECT `teachers` .`name`, `teachers` .`surname`, `courses`.`name`, `degrees`.`name`
+FROM `teachers`
+JOIN `course_teacher` ON `course_teacher` .`teacher_id` = `teachers` .`id`
+JOIN `courses` ON `course_teacher` .`course_id` = `courses` .`id`
+JOIN `degrees` ON `degrees` .`id` = `courses` .`degree_id`
+JOIN `departments` ON `departments`.`id` = `degrees` .`department_id`
+WHERE `departments` .`name` = 'Dipartimento di Matematica'
+ORDER BY `teachers` .`surname`;
