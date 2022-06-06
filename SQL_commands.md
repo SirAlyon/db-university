@@ -22,7 +22,7 @@ ____________________________________________________________________________
 
 3.
 
-SELECT * FROM `students` WHERE year(date_of_birth) < current_date - 30;
+SELECT * FROM `students` WHERE year(date_of_birth) < year(current_date) - 30;
 
 ____________________________________________________________________________
 
