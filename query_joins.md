@@ -63,3 +63,18 @@ JOIN `degrees` ON `degrees` .`id` = `courses` .`degree_id`
 JOIN `departments` ON `departments`.`id` = `degrees` .`department_id`
 WHERE `departments` .`name` = 'Dipartimento di Matematica'
 ORDER BY `teachers` .`surname`;
+
+_________________________________________________________
+
+
+
+7.
+
+SELECT `students` .`name` as `student_name`,`students` .`surname` as `students_surname`, `courses`.`name` as `course_name`, COUNT(`exam_student`.`exam_id`) as `attempts`
+FROM `exam_student`
+JOIN `students` ON `students`.`id` = `exam_student`.`student_id`
+JOIN `exams` ON `exams` .`id` = `exam_student` .`exam_id`
+JOIN `courses` ON `exams` .`course_id` = `courses` .`id`
+GROUP BY `students`.`id`, `exams`.`course_id`
+HAVING max(`exam_student`.`vote`) >= 18
+ORDER BY `students` .`id`;
